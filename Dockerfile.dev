@@ -1,0 +1,18 @@
+# https://github.com/rlpowell/neovim_rust
+FROM neovim_rust
+
+ARG USERNAME
+ARG UID
+ARG GID
+
+# RUN echo "${USERNAME}    ALL=(ALL)    NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME}
+
+# Dude I don't even know
+RUN echo 'stty erase ^h' >> /home/${USERNAME}/.bothrc-local
+
+RUN apt-get update && apt-get install -y exiftool
+
+# Profiling/coverage stuff
+RUN rustup component add llvm-tools
+RUN cargo install cargo-binutils rustfilt
+RUN echo 'export PATH=~/.cargo/bin:$PATH' >> /home/${USERNAME}/.bothrc-local

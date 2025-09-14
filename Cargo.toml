@@ -1,0 +1,18 @@
+[package]
+name = "picnamion"
+version = "1.0.0"
+edition = "2024"
+description = "Program to rename image and video files to add a prefix to the filename based on the date the image was taken."
+license = "MIT"
+authors = ["Robin Lee Powell <robinleepowell@gmail.com>"]
+
+[dependencies]
+exiftool = "0.2"
+regex = "1.11"
+serde_json = "1.0"
+config = "0.15"
+serde = { version = "1.0", features = ["derive"] }
+serde_regex = "1.1"
+jiff = "0.2"
+error-stack = "0.4"
+thiserror = "1.0"

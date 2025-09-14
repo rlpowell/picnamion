@@ -1,0 +1,31 @@
+{
+  // NOTE: need to use double backslashes, so maybe avoid them
+  "file_regexes": [
+    // Pixel camera app, all dates/times in UTC: PXL_20250811_185849536.MP.jpg, PXL_20250901_172238060.mp4, PXL_20250712_130959285.jpg, etc
+    "PXL_(?P<year>[0-9][0-9][0-9][0-9])(?P<month>[0-9][0-9])(?P<day>[0-9][0-9])_(?P<hour>[0-9][0-9])(?P<minute>[0-9][0-9])(?P<second>[0-9][0-9])(?P<ms>[0-9][0-9][0-9])[.]",
+    // VID_20120818_211233.mp4 , IMG_20120802_200043.jpg , Screenshot_20250730-075454.png , etc
+    "(video|Screenshot|MOV|VID|IMG|image)[-_ ](?P<year>[0-9][0-9][0-9][0-9])[-_]?(?P<month>[0-9][0-9])[-_]?(?P<day>[0-9][0-9])[ _-](?P<hour>[0-9][0-9])[-_.]?(?P<minute>[0-9][0-9])[-_.]?(?P<second>[0-9][0-9])[0-9]?[.][a-zA-Z0-9_.]+$",
+    // PS5/Screenshots/Horizon Forbidden West/Horizon Forbidden West_20220304232349.jpg
+    "_(?P<year>[0-9][0-9][0-9][0-9])(?P<month>[0-9][0-9])(?P<day>[0-9][0-9])(?P<hour>[0-9][0-9])(?P<minute>[0-9][0-9])(?P<second>[0-9][0-9])[.][a-zA-Z0-9_.]+$",
+    // I do not know where these are from; Slack maybe?; entire filename is 2024-03-26_12.29.44.jpg
+    "(^|/)(?P<year>[0-9][0-9][0-9][0-9])-(?P<month>[0-9][0-9])-(?P<day>[0-9][0-9])_(?P<hour>[0-9][0-9])[.](?P<minute>[0-9][0-9])[.](?P<second>[0-9][0-9])[0-9]?[.][a-zA-Z0-9_.]+$",
+    // This is Telegram "Save As", like photo_2023-01-01_07-52-05.jpg
+    "photo_(?P<year>[0-9][0-9][0-9][0-9])-(?P<month>[0-9][0-9])-(?P<day>[0-9][0-9])_(?P<hour>[0-9][0-9])-(?P<minute>[0-9][0-9])-(?P<second>[0-9][0-9])[.][a-zA-Z0-9_.]+$",
+    // This is Telegram "Export Chat", like photo_103@21-11-2021_14-08-55.jpg
+    "(photo|video)_[0-9]+[@](?P<day>[0-9][0-9])-(?P<month>[0-9][0-9])-(?P<year>[0-9][0-9][0-9][0-9])_(?P<hour>[0-9][0-9])-(?P<minute>[0-9][0-9])-(?P<second>[0-9][0-9])[.][a-zA-Z0-9_.]+$",
+    // This is "WhatsApp Image 2022-12-26 at 05.38.32.jpeg"
+    "WhatsApp[ ](Image|Video)[ ](?P<year>[0-9][0-9][0-9][0-9])-(?P<month>[0-9][0-9])-(?P<day>[0-9][0-9])[ ]at[ ](?P<hour>[0-9][0-9]).(?P<minute>[0-9][0-9]).(?P<second>[0-9][0-9])[._]",
+    // This is Wyze, 1744189190638_80482C470F8E131744189190.mp4 , first
+    // bit is miliseconds since epoch
+    "(^|/)(?P<sse>[0-9]{10})[0-9]{3}_.{24}.mp4$",
+    // This is Wyze again, 80482C38EA21_1745805915377.jpg, second
+    // bit is miliseconds since epoch
+    "(^|/)[0-9A-Z]{12}_(?P<sse>[0-9]{10})[0-9]{3}.jpg$",
+    // This is Wyze again, 1745810247.mp4 , uses epoch time
+    "(^|/)(?P<sse>[0-9]{10})([0-9]{3})?.(mp4|png|jpg)$",
+    // This is our custom Telegram file save format
+    "_Telegram_sent_(?P<year>[0-9][0-9][0-9][0-9])-(?P<month>[0-9][0-9])-(?P<day>[0-9][0-9])_(?P<hour>[0-9][0-9])-(?P<minute>[0-9][0-9])-(?P<second>[0-9][0-9])_from_",
+    // This is our custom SMS/MMS file save format
+    "_MMS_sent_(?P<year>[0-9][0-9][0-9][0-9])-(?P<month>[0-9][0-9])-(?P<day>[0-9][0-9])_(?P<hour>[0-9][0-9])-(?P<minute>[0-9][0-9])-(?P<second>[0-9][0-9])_from_",
+  ],
+}
