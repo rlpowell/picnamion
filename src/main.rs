@@ -245,8 +245,9 @@ fn handle_image(
         .change_context(MyError::ExifTool)?;
 
     // Check for non-images
+    let mimetype_str: String;
     if let Some(mimetype) = metadata_json["File"].get("MIMEType") {
-        let mimetype_str = mimetype.to_string();
+        mimetype_str = mimetype.to_string();
         if !mimetype_str.contains("video") && !mimetype_str.contains("image") {
             println!("ERROR: file {} is not an image.", filename);
             return Ok(());
@@ -749,7 +750,20 @@ fn handle_image(
             filename,
             newpath.to_str().unwrap()
         );
-        fs::rename(filepath, newpath).change_context(MyError::Misc)?;
+        fs::rename(filepath, newpath.clone()).change_context(MyError::Misc)?;
+
+        // FIXME: Even compared to other stuff here, this is incredibly specific to my setup; if
+        // anyone else is using this, tell me and I'll figure out a way to make this optional or
+        // configurable or something.
+        if mimetype_str.contains("video") {
+            let output = Command::new("/home/rlpowell/bin/video_hard_rotate.sh")
+                .arg(newpath)
+                .output()
+                .change_context(MyError::Command)?;
+
+            let stdout = String::from_utf8(output.stdout).change_context(MyError::Misc)?;
+            println!("video_hard_rotate.sh output: {}", stdout);
+        }
     }
 
     Ok(())
