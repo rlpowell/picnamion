@@ -4,7 +4,7 @@
     // Pixel camera app, all dates/times in UTC: PXL_20250811_185849536.MP.jpg, PXL_20250901_172238060.mp4, PXL_20250712_130959285.jpg, etc
     "PXL_(?P<year>[0-9][0-9][0-9][0-9])(?P<month>[0-9][0-9])(?P<day>[0-9][0-9])_(?P<hour>[0-9][0-9])(?P<minute>[0-9][0-9])(?P<second>[0-9][0-9])(?P<ms>[0-9][0-9][0-9])[.]",
     // VID_20120818_211233.mp4 , IMG_20120802_200043.jpg , Screenshot_20250730-075454.png , etc
-    "(video|Screenshot|MOV|VID|IMG|image)[-_ ](?P<year>[0-9][0-9][0-9][0-9])[-_]?(?P<month>[0-9][0-9])[-_]?(?P<day>[0-9][0-9])[ _-](?P<hour>[0-9][0-9])[-_.]?(?P<minute>[0-9][0-9])[-_.]?(?P<second>[0-9][0-9])[0-9]?[.][a-zA-Z0-9_.]+$",
+    "(video|Screenshot|MOV|VID|IMG|image|screen)[-_ ](?P<year>[0-9][0-9][0-9][0-9])[-_]?(?P<month>[0-9][0-9])[-_]?(?P<day>[0-9][0-9])[ _-](?P<hour>[0-9][0-9])[-_.]?(?P<minute>[0-9][0-9])[-_.]?(?P<second>[0-9][0-9])[0-9]?[.][a-zA-Z0-9_.]+$",
     // PS5/Screenshots/Horizon Forbidden West/Horizon Forbidden West_20220304232349.jpg
     "_(?P<year>[0-9][0-9][0-9][0-9])(?P<month>[0-9][0-9])(?P<day>[0-9][0-9])(?P<hour>[0-9][0-9])(?P<minute>[0-9][0-9])(?P<second>[0-9][0-9])[.][a-zA-Z0-9_.]+$",
     // I do not know where these are from; Slack maybe?; entire filename is 2024-03-26_12.29.44.jpg
