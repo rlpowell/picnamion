@@ -573,7 +573,7 @@ fn handle_image(
                                 ))
                                 .change_context(MyError::Misc)?
                                 .abs();
-                            if minutes < 1.0 {
+                            if minutes < 10.0 {
                                 println!(
                                     "INFO: Close enough match between filename timestamp {} and exif timestmap {}, {}, {}.",
                                     regex_dt,
