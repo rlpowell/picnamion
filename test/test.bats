@@ -1,4 +1,6 @@
 setup() {
+  bats_require_minimum_version 1.5.0
+
   load 'test_helper/bats-support/load'
   load 'test_helper/bats-assert/load'
 
@@ -34,7 +36,7 @@ output_check() {
   echo "checking file: $file" 1>&2
   # Set the file to its stored modification time
   touch -d @"$(cat "$file.time")" "$file"
-  run ./target/debug/picnamion "$file"
+  run -0 ./target/debug/picnamion "$file"
   if [[ "$(cat "$file.prefix")" == "NONE" ]]
   then
     refute_output --partial "INFO: Prefix determined:"

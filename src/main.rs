@@ -466,7 +466,9 @@ fn handle_image(
 
                 let mut new_from_utc_pts = pts.clone();
                 new_from_utc_pts.ts = new_from_utc_ts.clone();
-                new_from_utc_pts.score -= 1;
+                if new_from_utc_pts.score >= 1 {
+                    new_from_utc_pts.score -= 1;
+                }
                 exif_pic_timestamps.insert(new_from_utc_ts.to_string(), new_from_utc_pts);
             }
         }
