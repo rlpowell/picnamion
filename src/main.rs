@@ -35,6 +35,11 @@ impl PicTimeStamp {
                 self.score += 3;
             } else if tag == "EXIF CreateDate" {
                 self.score += 3;
+            } else if tag == "MakerNotes CreateDate" {
+                self.score += 3;
+            } else if tag == "MakerNotes SoftwareDate" {
+                // Totally unrelated to the date of the picture
+                self.score += 0;
             } else if tag == "EXIF DateTimeOriginal" {
                 self.score += 5;
             } else if tag == "Composite GPSDateTime" {
